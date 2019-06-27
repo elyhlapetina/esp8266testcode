@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/settings', (req, res) => {
-  res.send('poop')
+  res.json({ a: 1 });
 })
 
 app.listen(3000, () => console.log('Server running on port 3000'))
