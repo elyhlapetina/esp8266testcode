@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const app = express()
 app.get('/', (req, res) => {
-  res.send('HEY!!!')
+  res.send('HEY!')
 })
 
 app.get('/settings', (req, res) => {
