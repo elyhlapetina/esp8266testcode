@@ -19,6 +19,7 @@ app.get('/settings', (req, res) => {
 })
 
 app.post('/test', (req,res) => {
+	
 	var test = ''
 	var data=req.body.inc_data;
     var client  = mqtt.connect('mqqt://elyh:lapetina@ec2-54-205-131-65.compute-1.amazonaws.com')
@@ -30,7 +31,7 @@ app.post('/test', (req,res) => {
 
         if (!err) {
           test = 'success'
-          client.publish('test', data)
+          client.publish('test', inc_data)
         } else {
           test = 'fail'
 
