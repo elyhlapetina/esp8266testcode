@@ -10,12 +10,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/settings', (req, res) => {
-  res.json({ a: 2 });
+  res.json({ a: 2	 });
 })
 
 app.get('/test', (req,res) => {
 	var test = 'test'
-    var client  = mqtt.connect('ec2-54-205-131-65.compute-1.amazonaws.com',{port: 1883, username:'elyh',password:'lapetina' })
+    var client  = mqtt.connect('mqqt://elyh:lapetina@ec2-54-205-131-65.compute-1.amazonaws.com')
+
     client.on('connect', function () {
 
       client.subscribe('test', function (err) {
