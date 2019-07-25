@@ -5,8 +5,6 @@ const fs = require('fs');
 var mqtt = require('mqtt');
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => {
