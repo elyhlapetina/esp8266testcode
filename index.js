@@ -7,6 +7,24 @@ const fs = require('fs');
 var mqtt = require('mqtt');
 const app = express()
 
+
+var test = ''
+
+var client  = mqtt.connect('mqqt://elyh:lapetina@ec2-54-205-131-65.compute-1.amazonaws.com')
+
+client.on('connect', function () {
+
+  client.subscribe('test', function (err) {
+    if (!err) {
+      test = 'success'
+      
+    } else {
+      test = 'fail'
+
+    }
+  })
+})
+
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -17,29 +35,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/settings', (req, res) => {
+
   res.json({ a: 2	 });
 })
 
+
+
+
 app.post('/test', (req,res) => {
-
-	var test = ''
 	var data=req.body.inc_data;
-    var client  = mqtt.connect('mqqt://elyh:lapetina@ec2-54-205-131-65.compute-1.amazonaws.com')
-
-    client.on('connect', function () {
-
-      client.subscribe('test', function (err) {
-
-
-        if (!err) {
-          test = 'success'
-          client.publish('test', data)
-        } else {
-          test = 'fail'
-
-        }
-      })
-    })
+	client.publish('test', data)
 
 
 })
