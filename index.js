@@ -13,8 +13,10 @@ app.get('/settings', (req, res) => {
   res.json({ a: 2	 });
 })
 
-app.get('/test', (req,res) => {
-	var test = 'test'
+app.post('/test', (req,res) => {
+	
+
+	var data=req.body.inc_data;
     var client  = mqtt.connect('mqqt://elyh:lapetina@ec2-54-205-131-65.compute-1.amazonaws.com')
 
     client.on('connect', function () {
@@ -24,7 +26,7 @@ app.get('/test', (req,res) => {
 
         if (!err) {
           test = 'success'
-          client.publish('test', 'Hello mqtt')
+          client.publish('test', data)
         } else {
           test = 'fail'
 
