@@ -10,12 +10,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/settings', (req, res) => {
-  res.json({ a: 1 });
+  res.json({ a: 2 });
 })
 
 app.get('/test', (req,res) => {
-	svar test = 'test'
-    
+	var test = 'test'
     var client  = mqtt.connect('ec2-54-205-131-65.compute-1.amazonaws.com',{port: 1883, username:'elyh',password:'lapetina' })
     client.on('connect', function () {
 
